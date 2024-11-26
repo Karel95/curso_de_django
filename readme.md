@@ -57,3 +57,5 @@ p.task_set.get(id=1)
 <!-- Project.objects.filter(title__startswith="web") -->
 p = Project.objects
 p.filter(title__startswith="web")
+
+python manage.py runserver
