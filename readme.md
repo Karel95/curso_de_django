@@ -59,3 +59,5 @@ p = Project.objects
 p.filter(title__startswith="web")
 
 python manage.py runserver
+
+python manage.py createsuperuser
