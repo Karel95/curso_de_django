@@ -5,3 +5,36 @@
   ipsam quibusdam debitis praesentium, quidem, distinctio provident consequuntur
   cupiditate deserunt.
 </p>
+
+<!-- este comentario se muestra en consola -->
+{# este comentario no se muestra en consola. Usa sintaxis jinja #}
+
+{% for task in tasks %}
+
+<article>
+  <h2>
+    {% if task.done == False %}
+    ⏰
+    {% else %}
+    ✔
+    {% endif %} 
+    Title: {{ task.title }}
+  </h2>
+
+  {% if task.done == False %}
+  <p>Status: Not Done</p>
+  {% else %}
+  <p>Status: Done</p>
+  {% endif %}
+
+  <p>Description: {{ task.description }}</p>
+  <h3>Project ID: {{ task.id }}</h3>
+
+  <button>Delete</button>
+
+  {% if task.done == False %}
+  <button>Done</button>
+  {% endif %}
+</article>
+
+{% endfor %}

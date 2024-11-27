@@ -32,7 +32,10 @@ def project(request, id):
 def tasks(request):
   # tasks = list(Task.objects.values())
   # return JsonResponse(tasks, safe=False)
-  return render(request, 'tasks.html')
+  tasks = Task.objects.all()
+  return render(request, 'tasks.html', {
+    'tasks': tasks
+  })
 
 def task(request, id):
   # task = Task.objects.get(id=id)
