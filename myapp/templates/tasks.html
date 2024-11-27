@@ -1,40 +1,44 @@
-<h1>Tasks</h1>
-<p>
-  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore sapiente
-  beatae nemo delectus fugiat repudiandae illum consequatur ratione id culpa
-  ipsam quibusdam debitis praesentium, quidem, distinctio provident consequuntur
-  cupiditate deserunt.
-</p>
+{% extends 'layouts/base.html' %} 
 
-<!-- este comentario se muestra en consola -->
-{# este comentario no se muestra en consola. Usa sintaxis jinja #}
+{% block content %}
+  <h1>Tasks</h1>
+  <p>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore sapiente
+    beatae nemo delectus fugiat repudiandae illum consequatur ratione id culpa
+    ipsam quibusdam debitis praesentium, quidem, distinctio provident   consequuntur
+    cupiditate deserunt.
+  </p>
 
-{% for task in tasks %}
+  <!-- este comentario se muestra en consola -->
+  {# este comentario no se muestra en consola. Usa sintaxis jinja #}
 
-<article>
-  <h2>
+  {% for task in tasks %}
+  <article>
+    <h2>
+      {% if task.done == False %}
+      ⏰
+      {% else %}
+      ✔
+      {% endif %} 
+      Title: {{ task.title }}
+    </h2>
+
     {% if task.done == False %}
-    ⏰
+      <p>Status: Not Done</p>
     {% else %}
-    ✔
-    {% endif %} 
-    Title: {{ task.title }}
-  </h2>
+      <p>Status: Done</p>
+    {% endif %}
 
-  {% if task.done == False %}
-  <p>Status: Not Done</p>
-  {% else %}
-  <p>Status: Done</p>
-  {% endif %}
+    <p>Description: {{ task.description }}</p>
+    <h3>Project ID: {{ task.project_id }}</h3>
 
-  <p>Description: {{ task.description }}</p>
-  <h3>Project ID: {{ task.id }}</h3>
+    <button>Delete</button>
 
-  <button>Delete</button>
+    {% if task.done == False %}
+      <button>Done</button>
+    {% endif %}
+  </article>
+  {% endfor %}
+{% endblock %}
 
-  {% if task.done == False %}
-  <button>Done</button>
-  {% endif %}
-</article>
 
-{% endfor %}
