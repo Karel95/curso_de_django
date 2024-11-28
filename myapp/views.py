@@ -66,4 +66,12 @@ def create_task(request):
       description=request.POST['description'],
       project_id=1
     )
-    return redirect('/tasks/')
+    return redirect('tasks')
+
+def project_detail(request, id):
+  project = get_object_or_404(Project, id=id)
+  # tasks = Task.objects.filter(project_id = id)
+  return render(request, 'projects/detail.html', {
+    'project': project,
+    'tasks': project.task_set.all()  # all tasks related to this project
+  })

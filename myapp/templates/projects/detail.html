@@ -1,10 +1,13 @@
 {% extends 'layouts/base.html' %} 
 
-{% load static %}
-
 {% block content %}
-  <h1>Welcome to {{ title }}</h1>
-  <img src="{% static 'profile-photo.jpg' %}" alt="" width="200">
+  <h1>Project: {{project}}</h1>
+  {% for task in tasks %}
+    <article class="card">
+      <h1>Task: {{ task.title }}</h1>
+      <h2>Description: {{ task.description }}</h2>
+    </article>
+  {% endfor %}
   <p>
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore sapiente
     beatae nemo delectus fugiat repudiandae illum consequatur ratione id culpa
